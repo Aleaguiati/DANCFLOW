@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dancflow - Trajes Tradicionales de Bolivia</title>
+    <title>Dancflow - Alquiler y Venta de Trajes Tradicionales Bolivianos</title>
     <style>
         * {
             margin: 0;
@@ -11,503 +11,860 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --rojo-bolivia: #D4145A;
+            --amarillo-bolivia: #FBB03B;
+            --verde-bolivia: #009E60;
+        }
+        
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #D4145A 0%, #FBB03B 50%, #009E60 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        
+
+        /* Header y Navegación */
+        .top-banner {
+            background: linear-gradient(90deg, var(--rojo-bolivia) 0%, var(--amarillo-bolivia) 50%, var(--verde-bolivia) 100%);
+            height: 5px;
+        }
+
         header {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 2.5rem 1rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--rojo-bolivia), var(--amarillo-bolivia), var(--verde-bolivia));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--rojo-bolivia);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(212,20,90,0.9), rgba(0,158,96,0.9)), url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=1600') center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            color: white;
             position: relative;
         }
-        
-        .flag-colors {
-            height: 8px;
-            background: linear-gradient(to right, #D4145A 33%, #FBB03B 33%, #FBB03B 66%, #009E60 66%);
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-        }
-        
-        header h1 {
-            color: #D4145A;
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        header p {
-            color: #666;
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-        
-        .subtitle {
-            color: #009E60;
-            font-weight: bold;
-            margin-top: 0.5rem;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        .intro {
-            background: white;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            border-left: 6px solid #D4145A;
-        }
-        
-        .intro h2 {
-            color: #D4145A;
+
+        .hero-content h1 {
+            font-size: 4rem;
             margin-bottom: 1rem;
-            font-size: 2rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s;
         }
-        
-        .intro p {
-            font-size: 1.05rem;
-            color: #555;
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s;
         }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeIn 1.5s;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--rojo-bolivia);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--rojo-bolivia);
+        }
+
+        /* Servicios Section */
+        .servicios {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--rojo-bolivia);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
             margin-bottom: 3rem;
         }
-        
-        .card {
+
+        .servicios-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .servicio-card {
             background: white;
+            padding: 2.5rem;
             border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--amarillo-bolivia);
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .servicio-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .servicio-card h3 {
+            color: var(--rojo-bolivia);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Catálogo Section */
+        .catalogo {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .catalogo-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .traje-card {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border-top: 5px solid #FBB03B;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
         }
-        
-        .card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+
+        .traje-card:hover {
+            transform: scale(1.05);
         }
-        
-        .card-image {
+
+        .traje-image {
             width: 100%;
-            height: 320px;
+            height: 300px;
             background-size: cover;
             background-position: center;
             position: relative;
-            overflow: hidden;
         }
-        
-        .card-image::before {
-            content: '';
+
+        .badge {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3));
-        }
-        
-        .card-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(212, 20, 90, 0.95);
+            top: 15px;
+            right: 15px;
+            background: var(--rojo-bolivia);
             color: white;
-            padding: 0.7rem 1.3rem;
-            border-radius: 30px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
             font-size: 0.9rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        
-        .card-content {
+
+        .traje-info {
+            padding: 1.5rem;
+        }
+
+        .traje-info h3 {
+            color: var(--rojo-bolivia);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .traje-region {
+            color: var(--verde-bolivia);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .precio {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .precio-item {
+            text-align: center;
+        }
+
+        .precio-item span {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .precio-item strong {
+            color: var(--rojo-bolivia);
+            font-size: 1.2rem;
+        }
+
+        /* Proceso Section */
+        .proceso {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #fff5e6 0%, #e8f5e9 100%);
+        }
+
+        .proceso-steps {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
             padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         }
-        
-        .card-content h3 {
-            color: #D4145A;
-            margin-bottom: 0.7rem;
-            font-size: 1.7rem;
-        }
-        
-        .card-content .region {
-            color: #009E60;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 1rem;
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--rojo-bolivia), var(--amarillo-bolivia));
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
         }
-        
-        .region::before {
-            content: '📍';
-            font-size: 1.2rem;
+
+        .step h3 {
+            color: var(--verde-bolivia);
+            margin-bottom: 0.5rem;
         }
-        
-        .card-content p {
-            color: #555;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
+
+        /* Contacto Section */
+        .contacto {
+            padding: 5rem 2rem;
+            background: white;
         }
-        
-        .characteristics {
-            background: linear-gradient(135deg, #FFF5E6 0%, #FFF9F0 100%);
-            padding: 1.3rem;
-            border-radius: 12px;
-            margin-top: 1rem;
-            border-left: 4px solid #FBB03B;
+
+        .contacto-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
         }
-        
-        .characteristics h4 {
-            color: #D4145A;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+
+        .contacto-info {
+            background: linear-gradient(135deg, var(--rojo-bolivia), var(--verde-bolivia));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
         }
-        
-        .characteristics ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .characteristics li {
-            padding: 0.5rem 0;
-            color: #555;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: start;
-        }
-        
-        .characteristics li:before {
-            content: "🎭";
-            margin-right: 0.7rem;
-            font-size: 1.1rem;
-        }
-        
-        .cultural-note {
-            background: #E8F5E9;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            border-left: 4px solid #009E60;
-            font-size: 0.9rem;
-            color: #2E7D32;
-            font-style: italic;
-        }
-        
-        .regions-intro {
-            background: linear-gradient(135deg, rgba(212,20,90,0.1) 0%, rgba(0,158,96,0.1) 100%);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            text-align: center;
-        }
-        
-        .regions-intro h2 {
-            color: #D4145A;
+
+        .contacto-info h3 {
             font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon {
+            font-size: 2rem;
+        }
+
+        .contacto-form {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--rojo-bolivia);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--amarillo-bolivia);
             margin-bottom: 1rem;
         }
-        
-        footer {
-            background: rgba(255, 255, 255, 0.98);
-            text-align: center;
-            padding: 2.5rem;
-            margin-top: 3rem;
-            position: relative;
+
+        .footer-section ul {
+            list-style: none;
         }
-        
-        .flag-colors-bottom {
-            height: 8px;
-            background: linear-gradient(to right, #D4145A 33%, #FBB03B 33%, #FBB03B 66%, #009E60 66%);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-        
-        footer p {
-            color: #666;
+
+        .footer-section ul li {
             margin-bottom: 0.5rem;
-            font-size: 1.05rem;
         }
-        
-        footer .motto {
-            color: #D4145A;
-            font-weight: bold;
-            font-size: 1.2rem;
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--amarillo-bolivia);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
             margin-top: 1rem;
         }
-        
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--rojo-bolivia);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+
+        .footer-flag {
+            height: 5px;
+            background: linear-gradient(90deg, var(--rojo-bolivia) 0%, var(--amarillo-bolivia) 50%, var(--verde-bolivia) 100%);
+            margin-top: 2rem;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
             }
-            
-            .gallery {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .contacto-container {
                 grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <div class="top-banner"></div>
+    
     <header>
-        <div class="flag-colors"></div>
-        <h1>🇧🇴 Dancflow - Trajes Tradicionales de Bolivia</h1>
-        <p>Un viaje por la riqueza cultural de nuestra tierra</p>
-        <p class="subtitle">Patrimonio Vivo de los Pueblos Bolivianos</p>
+        <nav>
+            <div class="logo">🇧🇴 DANCFLOW</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="intro">
-            <h2>La Vestimenta como Identidad Nacional</h2>
-            <p>Bolivia es un país pluricultural donde conviven 36 naciones indígenas, cada una con su propia vestimenta tradicional que refleja su historia, cosmovisión y conexión con la Pachamama. Los trajes tradicionales bolivianos son verdaderas obras de arte textiles que han resistido el paso del tiempo, manteniendo vivas las tradiciones ancestrales y representando con orgullo la identidad de cada región y cultura.</p>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>DANCFLOW</h1>
+            <p>Alquiler y Venta de Trajes Tradicionales Bolivianos</p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Preservando nuestra identidad cultural con elegancia y tradición</p>
+            <div class="cta-buttons">
+                <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+                <a href="#contacto" class="btn btn-secondary">Contáctanos</a>
+            </div>
         </div>
+    </section>
 
-        <div class="regions-intro">
-            <h2>Diversidad Cultural en Cada Región</h2>
-            <p>Desde el Altiplano hasta los valles, de las tierras bajas a las montañas, cada rincón de Bolivia tiene su propia expresión textil</p>
+    <section class="servicios" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Tradición y calidad en cada prenda</p>
+        
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <div class="servicio-icon">🎭</div>
+                <h3>Alquiler de Trajes</h3>
+                <p>Amplio catálogo de trajes tradicionales para eventos, danzas folklóricas y celebraciones. Mantenimiento y limpieza incluidos.</p>
+            </div>
+
+            <div class="servicio-card">
+                <div class="servicio-icon">👗</div>
+                <h3>Venta de Trajes</h3>
+                <p>Trajes tradicionales auténticos confeccionados por artesanos bolivianos. Calidad premium y diseños exclusivos.</p>
+            </div>
+
+            <div class="servicio-card">
+                <div class="servicio-icon">✂️</div>
+                <h3>Confección a Medida</h3>
+                <p>Diseñamos y confeccionamos tu traje ideal respetando las tradiciones ancestrales de cada región boliviana.</p>
+            </div>
+
+            <div class="servicio-card">
+                <div class="servicio-icon">🎨</div>
+                <h3>Accesorios Tradicionales</h3>
+                <p>Complementa tu atuendo con joyas, sombreros, aguayos y accesorios auténticos de cada región.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="gallery">
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
-                    <div class="card-badge">Altiplano</div>
+    <section class="catalogo" id="catalogo">
+        <h2 class="section-title">Catálogo de Trajes</h2>
+        <p class="section-subtitle">Descubre la diversidad cultural de Bolivia</p>
+        
+        <div class="catalogo-grid">
+            <div class="traje-card">
+                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                    <span class="badge">Disponible</span>
                 </div>
-                <div class="card-content">
+                <div class="traje-info">
                     <h3>Cholita Paceña</h3>
-                    <div class="region">La Paz</div>
-                    <p>El traje de la cholita paceña es un símbolo icónico de Bolivia. La combinación de pollera, mantilla y bombín representa la fusión cultural entre lo indígena y lo colonial, creando una identidad única reconocida mundialmente.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Pollera plisada de colores vibrantes (hasta 8 metros de tela)</li>
-                            <li>Manta o mantilla bordada en los hombros</li>
-                            <li>Bombín (sombrero) colocado de lado</li>
-                            <li>Blusas con bordados y encajes</li>
-                            <li>Enaguas almidonadas (hasta 15 faldas interiores)</li>
-                            <li>Joyas de oro y plata, especialmente tupos</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 El bombín fue introducido en 1920 y se convirtió en símbolo de elegancia. La posición del sombrero indica el estado civil de la mujer.
+                    <p class="traje-region">📍 La Paz</p>
+                    <p>Pollera plisada, mantilla bordada, bombín. Incluye accesorios completos.</p>
+                    <div class="precio">
+                        <div class="precio-item">
+                            <span>Alquiler</span>
+                            <strong>250 Bs</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Venta</span>
+                            <strong>1800 Bs</strong>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1566404394190-cda8c6209208?w=800');">
-                    <div class="card-badge">Altiplano</div>
+            <div class="traje-card">
+                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1566404394190-cda8c6209208?w=800');">
+                    <span class="badge">Disponible</span>
                 </div>
-                <div class="card-content">
-                    <h3>Traje Aymara</h3>
-                    <div class="region">Altiplano boliviano</div>
-                    <p>La vestimenta aymara refleja la resistencia cultural de uno de los pueblos más antiguos de Bolivia. Cada prenda está cargada de simbolismo y representa la conexión con la tierra y los ancestros.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Aguayo multicolor tejido en telar ancestral</li>
-                            <li>Poncho de lana de alpaca o llama</li>
-                            <li>Ch'ulu (gorro andino) con orejeras</li>
-                            <li>Montera para las mujeres</li>
-                            <li>Faja o chumpi con diseños geométricos</li>
-                            <li>Abarcas de cuero u ojotas tradicionales</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 Los colores y diseños del aguayo tienen significados específicos relacionados con la cosmovisión andina y la dualidad.
+                <div class="traje-info">
+                    <h3>Traje de Diablada</h3>
+                    <p class="traje-region">📍 Oruro</p>
+                    <p>Máscara elaborada, traje bordado con pedrería, capa y botas.</p>
+                    <div class="precio">
+                        <div class="precio-item">
+                            <span>Alquiler</span>
+                            <strong>400 Bs</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Venta</span>
+                            <strong>3500 Bs</strong>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1612462584344-f0a84e1fce8d?w=800');">
-                    <div class="card-badge">Valles</div>
+            <div class="traje-card">
+                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1612462584344-f0a84e1fce8d?w=800');">
+                    <span class="badge">Disponible</span>
                 </div>
-                <div class="card-content">
+                <div class="traje-info">
                     <h3>Traje Cochabambino</h3>
-                    <div class="region">Cochabamba</div>
-                    <p>El traje típico valluno se caracteriza por su elegancia y colorido. Las mujeres cochabambinas han mantenido viva esta tradición, especialmente visible en fiestas patronales y celebraciones regionales.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Pollera amplia con bordados florales</li>
-                            <li>Blusa blanca con encajes de Camiri</li>
-                            <li>Rebozo o manta de seda</li>
-                            <li>Sombrero de ala ancha o gorra</li>
-                            <li>Alpargatas o zapatos tradicionales</li>
-                            <li>Trenzas largas adornadas con cintas</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 El traje cochabambino refleja la influencia de los valles fértiles en sus diseños florales y colores cálidos.
+                    <p class="traje-region">📍 Cochabamba</p>
+                    <p>Pollera floreada, blusa con encajes, rebozo y sombrero.</p>
+                    <div class="precio">
+                        <div class="precio-item">
+                            <span>Alquiler</span>
+                            <strong>200 Bs</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Venta</span>
+                            <strong>1500 Bs</strong>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1614853035111-7ae871764a5f?w=800');">
-                    <div class="card-badge">Altiplano</div>
+            <div class="traje-card">
+                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                    <span class="badge">Disponible</span>
                 </div>
-                <div class="card-content">
-                    <h3>Traje de Oruro - Diablada</h3>
-                    <div class="region">Oruro</div>
-                    <p>El traje de la Diablada es patrimonio de la humanidad. Usado en el Carnaval de Oruro, representa la lucha entre el bien y el mal, fusionando elementos católicos con creencias andinas.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Máscara de diablo con cuernos elaborados</li>
-                            <li>Traje bordado con hilos de oro y pedrería</li>
-                            <li>Capa con dragones y símbolos mineros</li>
-                            <li>Botas de cuero con cascabeles</li>
-                            <li>Pechera con espejos y lentejuelas</li>
-                            <li>Pañuelo bordado con la Virgen del Socavón</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 Cada traje puede pesar hasta 25 kilos y su confección requiere meses de trabajo artesanal.
+                <div class="traje-info">
+                    <h3>Traje Aymara</h3>
+                    <p class="traje-region">📍 Altiplano</p>
+                    <p>Aguayo multicolor, poncho de alpaca, ch'ulu y accesorios.</p>
+                    <div class="precio">
+                        <div class="precio-item">
+                            <span>Alquiler</span>
+                            <strong>180 Bs</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Venta</span>
+                            <strong>1400 Bs</strong>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
-                    <div class="card-badge">Altiplano</div>
+            <div class="traje-card">
+                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1614853035111-7ae871764a5f?w=800');">
+                    <span class="badge">Disponible</span>
                 </div>
-                <div class="card-content">
-                    <h3>Traje Quechua</h3>
-                    <div class="region">Altiplano y Valles</div>
-                    <p>El pueblo quechua, heredero del Imperio Inca, mantiene viva su tradición textil con prendas que reflejan la jerarquía social y la conexión espiritual con la naturaleza.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Lliclla o aguayo tejido a mano</li>
-                            <li>Pollera de bayeta con bordados</li>
-                            <li>Montera o sombrero de lana</li>
-                            <li>Chumpi (faja) con iconografía ancestral</li>
-                            <li>Ojota (sandalia) de cuero</li>
-                            <li>Tupus (prendedores) de plata</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 Los tejidos quechuas incluyen símbolos que representan animales sagrados, montañas y elementos cosmológicos.
+                <div class="traje-info">
+                    <h3>Traje Chaqueño</h3>
+                    <p class="traje-region">📍 Tarija</p>
+                    <p>Bombachas, camisa, pañuelo, sombrero y botas tradicionales.</p>
+                    <div class="precio">
+                        <div class="precio-item">
+                            <span>Alquiler</span>
+                            <strong>220 Bs</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Venta</span>
+                            <strong>1600 Bs</strong>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
-                    <div class="card-badge">Tierras Bajas</div>
+            <div class="traje-card">
+                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                    <span class="badge">Disponible</span>
                 </div>
-                <div class="card-content">
-                    <h3>Traje Guaraní</h3>
-                    <div class="region">Chaco boliviano</div>
-                    <p>El traje guaraní refleja la identidad de los pueblos del oriente boliviano, adaptado al clima cálido y con elementos que muestran su conexión con la naturaleza tropical.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Tipoy (vestido largo de algodón)</li>
-                            <li>Bordados con motivos de flora y fauna</li>
-                            <li>Collares de semillas y plumas</li>
-                            <li>Vinchas con diseños geométricos</li>
-                            <li>Telas livianas de colores naturales</li>
-                            <li>Descalzos o sandalias de cuero</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 Los guaraníes destacan por sus tejidos de caraguatá, una fibra vegetal tradicional de la región.
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1566404394190-cda8c6209208?w=800');">
-                    <div class="card-badge">Valles</div>
-                </div>
-                <div class="card-content">
-                    <h3>Traje de Chaqueño</h3>
-                    <div class="region">Tarija</div>
-                    <p>El traje chaqueño representa la cultura gauchesca de Tarija, con influencias argentinas. Es típico en festividades como la Fiesta de la Vendimia y San Roque.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Bombachas (pantalón amplio) de gamuza</li>
-                            <li>Camisa blanca con pañuelo al cuello</li>
-                            <li>Sombrero de ala ancha</li>
-                            <li>Botas de cuero con espuelas</li>
-                            <li>Faja o cinturón típico</li>
-                            <li>Poncho para las mujeres con diseños florales</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 El traje chaqueño refleja la tradición vitivinícola y ganadera de la región más meridional de Bolivia.
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
-                    <div class="card-badge">Altiplano</div>
-                </div>
-                <div class="card-content">
-                    <h3>Traje de Potosí</h3>
-                    <div class="region">Potosí</div>
-                    <p>La vestimenta potosina refleja la historia minera de la ciudad imperial, con elementos que muestran tanto la riqueza del Cerro Rico como las tradiciones ancestrales.</p>
-                    <div class="characteristics">
-                        <h4>Elementos Característicos:</h4>
-                        <ul>
-                            <li>Pollera negra o de colores oscuros</li>
-                            <li>Mantilla bordada con hilos de plata</li>
-                            <li>Sombrero de ala corta</li>
-                            <li>Joyas de plata de los maestros plateros</li>
-                            <li>Blusa con bordados finos</li>
-                            <li>Múltiples enaguas almidonadas</li>
-                        </ul>
-                    </div>
-                    <div class="cultural-note">
-                        💡 Los trajes potosinos incorporan plata en sus adornos, recordando la riqueza mineral de la región.
+                <div class="traje-info">
+                    <h3>Traje Potosino</h3>
+                    <p class="traje-region">📍 Potosí</p>
+                    <p>Pollera oscura, mantilla con hilos de plata, joyas tradicionales.</p>
+                    <div class="precio">
+                        <div class="precio-item">
+                            <span>Alquiler</span>
+                            <strong>230 Bs</strong>
+                        </div>
+                        <div class="precio-item">
+                            <span>Venta</span>
+                            <strong>1700 Bs</strong>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="intro">
-            <h2>Patrimonio Cultural Inmaterial</h2>
-            <p>Los trajes tradicionales bolivianos son mucho más que vestimenta: son expresión de resistencia cultural, orgullo nacional e identidad. Cada hilo tejido cuenta historias de nuestros ancestros, cada color representa elementos de nuestra cosmovisión andina y amazónica. En Bolivia, vestir el traje tradicional es un acto de afirmación cultural y un homenaje a las generaciones que preservaron estas tradiciones a través de los siglos.</p>
-            <p style="margin-top: 1rem; color: #D4145A; font-weight: bold;">La UNESCO ha reconocido al Carnaval de Oruro y sus trajes como Obra Maestra del Patrimonio Oral e Intangible de la Humanidad.</p>
+    <section class="proceso" id="proceso">
+        <h2 class="section-title">¿Cómo Funciona?</h2>
+        <p class="section-subtitle">Proceso simple y rápido</p>
+        
+        <div class="proceso-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Elige tu Traje</h3>
+                <p>Navega por nuestro catálogo y selecciona el traje perfecto</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Contáctanos</h3>
+                <p>Llámanos o escríbenos para verificar disponibilidad</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Prueba y Ajuste</h3>
+                <p>Visítanos para probarte el traje y hacer ajustes</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Disfruta</h3>
+                <p>¡Luce radiante en tu evento con tu traje tradicional!</p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-subtitle">Estamos aquí para ayudarte</p>
+        
+        <div class="contacto-container">
+            <div class="contacto-info">
+                <h3>Información de Contacto</h3>
+                
+                <div class="info-item">
+                    <span class="info-icon">📞</span>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <p>72758524</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <div>
+                        <strong>Dirección</strong>
+                        <p>Av. Rinconada, Cochabamba</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">⏰</span>
+                    <div>
+                        <strong>Horario de Atención</strong>
+                        <p>Lunes a Sábado: 9:00 - 19:00</p>
+                        <p>Domingos: 9:00 - 13:00</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">✉️</span>
+                    <div>
+                        <strong>Email</strong>
+                        <p>contacto@dancflow.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contacto-form">
+                <h3 style="color: var(--rojo-bolivia); margin-bottom: 1.5rem;">Envíanos un Mensaje</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel" placeholder="Tu teléfono" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Servicio de Interés</label>
+                        <select required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="alquiler">Alquiler de Traje</option>
+                            <option value="venta">Compra de Traje</option>
+                            <option value="confeccion">Confección a Medida</option>
+                            <option value="accesorios">Accesorios</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea placeholder="Cuéntanos qué necesitas..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p><strong>Dancflow - Bolivia Plurinacional</strong></p>
-        <p>36 Naciones, 36 Culturas, Una sola Bolivia</p>
-        <div style="margin: 1.5rem 0; padding: 1.5rem; background: linear-gradient(135deg, #FFF5E6 0%, #FFF9F0 100%); border-radius: 10px; border-left: 4px solid #D4145A;">
-            <h3 style="color: #D4145A; margin-bottom: 1rem; font-size: 1.3rem;">📞 Contacto</h3>
-            <p style="color: #333; margin-bottom: 0.5rem;"><strong>Teléfono:</strong> 72758524</p>
-            <p style="color: #333;"><strong>Dirección:</strong> Av. Rinconada, Cochabamba</p>
-        </div>
-        <p class="motto">🎭 ¡Jallalla Bolivia! 🇧🇴</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">
-            Preservando nuestro patrimonio textil para las futuras generaciones
-        </p>
-        <div class="flag-colors-bottom"></div>
-    </footer>
-</body>
-</html>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🇧🇴 DANCFLOW</h3>
+                <p>Preservando la identidad cultural boliviana a través de sus trajes tradicionales.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="WhatsApp">💬</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="#servicios">Alquiler de Trajes</a></li>
+                    <li><a href="#servicios">Venta de Trajes</a></li>
+                    <li><a href="#servicios">Confección a Medida</a></li>
+                    <li><a href="#servicios">Accesorios Tradicionales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Regiones</h3>
+                <ul>
+                    <li>La Paz</li>
+                    <li>Cochabamba</li>
+                    <li>Oruro</li>
+                    <li>Potosí</li>
+                    <li>Tarija</li>
+                    <li>Y más...</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📞 72758524</li>
+                    <li>📍 Av. Rinconada, Cochabamba</li>
+                    <li>✉️ contacto@dancflow.com</li>
+                </ul>
+            </div>
