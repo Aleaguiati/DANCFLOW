@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dancflow - Alquiler y Venta de Trajes Tradicionales Bolivianos</title>
     <style>
+        /* RESET BÁSICO */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        /* VARIABLES DE COLORES (Bandera de Bolivia) */
         :root {
-            --rojo-bolivia: #D4145A;
-            --amarillo-bolivia: #FBB03B;
-            --verde-bolivia: #009E60;
+            --rojo-bolivia: #D4145A; /* Rojo */
+            --amarillo-bolivia: #FBB03B; /* Amarillo/Dorado */
+            --verde-bolivia: #009E60; /* Verde */
         }
         
         body {
@@ -24,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* Header y Navegación */
+        /* HEADER Y NAVEGACIÓN */
         .top-banner {
             background: linear-gradient(90deg, var(--rojo-bolivia) 0%, var(--amarillo-bolivia) 50%, var(--verde-bolivia) 100%);
             height: 5px;
@@ -73,8 +75,9 @@
             color: var(--rojo-bolivia);
         }
 
-        /* Hero Section */
+        /* HERO SECTION */
         .hero {
+            /* Imagen de fondo de stock, puedes reemplazarla por una tuya */
             background: linear-gradient(135deg, rgba(212,20,90,0.9), rgba(0,158,96,0.9)), url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=1600') center/cover;
             height: 90vh;
             display: flex;
@@ -138,7 +141,7 @@
             color: var(--rojo-bolivia);
         }
 
-        /* Servicios Section */
+        /* SERVICIOS SECTION */
         .servicios {
             padding: 5rem 2rem;
             background: #f8f9fa;
@@ -192,7 +195,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Catálogo Section */
+        /* CATÁLOGO SECTION */
         .catalogo {
             padding: 5rem 2rem;
             background: white;
@@ -278,7 +281,7 @@
             font-size: 1.2rem;
         }
 
-        /* Proceso Section */
+        /* PROCESO SECTION */
         .proceso {
             padding: 5rem 2rem;
             background: linear-gradient(135deg, #fff5e6 0%, #e8f5e9 100%);
@@ -319,7 +322,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Contacto Section */
+        /* CONTACTO SECTION */
         .contacto {
             padding: 5rem 2rem;
             background: white;
@@ -396,7 +399,7 @@
             min-height: 100px;
         }
 
-        /* Footer */
+        /* FOOTER */
         footer {
             background: #222;
             color: white;
@@ -451,6 +454,8 @@
             justify-content: center;
             font-size: 1.2rem;
             transition: transform 0.3s;
+            text-decoration: none; /* Asegura que el ícono es blanco */
+            color: white;
         }
 
         .social-links a:hover {
@@ -470,7 +475,7 @@
             margin-top: 2rem;
         }
 
-        /* Animaciones */
+        /* ANIMACIONES */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -502,7 +507,7 @@
             }
         }
 
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -521,7 +526,8 @@
             }
 
             .nav-links {
-                display: none;
+                /* Si usas un menú hamburguesa, aquí lo ocultas, si no, puedes dejarlo visible */
+                display: none; 
             }
         }
     </style>
@@ -591,7 +597,7 @@
         
         <div class="catalogo-grid">
             <div class="traje-card">
-                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                <div class="traje-image" style="background-image: url('https://i.imgur.com/k9b8zL3.jpeg');"> 
                     <span class="badge">Disponible</span>
                 </div>
                 <div class="traje-info">
@@ -612,7 +618,7 @@
             </div>
 
             <div class="traje-card">
-                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1566404394190-cda8c6209208?w=800');">
+                <div class="traje-image" style="background-image: url('https://i.imgur.com/sYqjD3s.jpeg');">
                     <span class="badge">Disponible</span>
                 </div>
                 <div class="traje-info">
@@ -633,7 +639,7 @@
             </div>
 
             <div class="traje-card">
-                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1612462584344-f0a84e1fce8d?w=800');">
+                <div class="traje-image" style="background-image: url('https://i.imgur.com/8QjZ44p.jpeg');">
                     <span class="badge">Disponible</span>
                 </div>
                 <div class="traje-info">
@@ -654,7 +660,7 @@
             </div>
 
             <div class="traje-card">
-                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                <div class="traje-image" style="background-image: url('https://i.imgur.com/vH1rE2z.jpeg');">
                     <span class="badge">Disponible</span>
                 </div>
                 <div class="traje-info">
@@ -675,7 +681,7 @@
             </div>
 
             <div class="traje-card">
-                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1614853035111-7ae871764a5f?w=800');">
+                <div class="traje-image" style="background-image: url('https://i.imgur.com/6X9mY7f.jpeg');">
                     <span class="badge">Disponible</span>
                 </div>
                 <div class="traje-info">
@@ -696,7 +702,7 @@
             </div>
 
             <div class="traje-card">
-                <div class="traje-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                <div class="traje-image" style="background-image: url('https://i.imgur.com/Qk7L7p1.jpeg');">
                     <span class="badge">Disponible</span>
                 </div>
                 <div class="traje-info">
@@ -868,3 +874,13 @@
                     <li>✉️ contacto@dancflow.com</li>
                 </ul>
             </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2025 DANCFLOW. Todos los derechos reservados. | Desarrollado con pasión boliviana.
+        </div>
+
+        <div class="footer-flag"></div>
+    </footer>
+</body>
+</html>
