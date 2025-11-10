@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dancflow - Trajes Tradicionales de Bolivia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #D4145A 0%, #FBB03B 50%, #009E60 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .flag-colors {
+            height: 8px;
+            background: linear-gradient(to right, #D4145A 33%, #FBB03B 33%, #FBB03B 66%, #009E60 66%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        header h1 {
+            color: #D4145A;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        header p {
+            color: #666;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .subtitle {
+            color: #009E60;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .intro {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-left: 6px solid #D4145A;
+        }
+        
+        .intro h2 {
+            color: #D4145A;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .intro p {
+            font-size: 1.05rem;
+            color: #555;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-top: 5px solid #FBB03B;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3));
+        }
+        
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(212, 20, 90, 0.95);
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .card-content h3 {
+            color: #D4145A;
+            margin-bottom: 0.7rem;
+            font-size: 1.7rem;
+        }
+        
+        .card-content .region {
+            color: #009E60;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .region::before {
+            content: '📍';
+            font-size: 1.2rem;
+        }
+        
+        .card-content p {
+            color: #555;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+        
+        .characteristics {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFF9F0 100%);
+            padding: 1.3rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border-left: 4px solid #FBB03B;
+        }
+        
+        .characteristics h4 {
+            color: #D4145A;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .characteristics ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .characteristics li {
+            padding: 0.5rem 0;
+            color: #555;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: start;
+        }
+        
+        .characteristics li:before {
+            content: "🎭";
+            margin-right: 0.7rem;
+            font-size: 1.1rem;
+        }
+        
+        .cultural-note {
+            background: #E8F5E9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #009E60;
+            font-size: 0.9rem;
+            color: #2E7D32;
+            font-style: italic;
+        }
+        
+        .regions-intro {
+            background: linear-gradient(135deg, rgba(212,20,90,0.1) 0%, rgba(0,158,96,0.1) 100%);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .regions-intro h2 {
+            color: #D4145A;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.98);
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .flag-colors-bottom {
+            height: 8px;
+            background: linear-gradient(to right, #D4145A 33%, #FBB03B 33%, #FBB03B 66%, #009E60 66%);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        footer p {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        
+        footer .motto {
+            color: #D4145A;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flag-colors"></div>
+        <h1>🇧🇴 Dancflow - Trajes Tradicionales de Bolivia</h1>
+        <p>Un viaje por la riqueza cultural de nuestra tierra</p>
+        <p class="subtitle">Patrimonio Vivo de los Pueblos Bolivianos</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>La Vestimenta como Identidad Nacional</h2>
+            <p>Bolivia es un país pluricultural donde conviven 36 naciones indígenas, cada una con su propia vestimenta tradicional que refleja su historia, cosmovisión y conexión con la Pachamama. Los trajes tradicionales bolivianos son verdaderas obras de arte textiles que han resistido el paso del tiempo, manteniendo vivas las tradiciones ancestrales y representando con orgullo la identidad de cada región y cultura.</p>
+        </div>
+
+        <div class="regions-intro">
+            <h2>Diversidad Cultural en Cada Región</h2>
+            <p>Desde el Altiplano hasta los valles, de las tierras bajas a las montañas, cada rincón de Bolivia tiene su propia expresión textil</p>
+        </div>
+
+        <div class="gallery">
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                    <div class="card-badge">Altiplano</div>
+                </div>
+                <div class="card-content">
+                    <h3>Cholita Paceña</h3>
+                    <div class="region">La Paz</div>
+                    <p>El traje de la cholita paceña es un símbolo icónico de Bolivia. La combinación de pollera, mantilla y bombín representa la fusión cultural entre lo indígena y lo colonial, creando una identidad única reconocida mundialmente.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Pollera plisada de colores vibrantes (hasta 8 metros de tela)</li>
+                            <li>Manta o mantilla bordada en los hombros</li>
+                            <li>Bombín (sombrero) colocado de lado</li>
+                            <li>Blusas con bordados y encajes</li>
+                            <li>Enaguas almidonadas (hasta 15 faldas interiores)</li>
+                            <li>Joyas de oro y plata, especialmente tupos</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 El bombín fue introducido en 1920 y se convirtió en símbolo de elegancia. La posición del sombrero indica el estado civil de la mujer.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1566404394190-cda8c6209208?w=800');">
+                    <div class="card-badge">Altiplano</div>
+                </div>
+                <div class="card-content">
+                    <h3>Traje Aymara</h3>
+                    <div class="region">Altiplano boliviano</div>
+                    <p>La vestimenta aymara refleja la resistencia cultural de uno de los pueblos más antiguos de Bolivia. Cada prenda está cargada de simbolismo y representa la conexión con la tierra y los ancestros.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Aguayo multicolor tejido en telar ancestral</li>
+                            <li>Poncho de lana de alpaca o llama</li>
+                            <li>Ch'ulu (gorro andino) con orejeras</li>
+                            <li>Montera para las mujeres</li>
+                            <li>Faja o chumpi con diseños geométricos</li>
+                            <li>Abarcas de cuero u ojotas tradicionales</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 Los colores y diseños del aguayo tienen significados específicos relacionados con la cosmovisión andina y la dualidad.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1612462584344-f0a84e1fce8d?w=800');">
+                    <div class="card-badge">Valles</div>
+                </div>
+                <div class="card-content">
+                    <h3>Traje Cochabambino</h3>
+                    <div class="region">Cochabamba</div>
+                    <p>El traje típico valluno se caracteriza por su elegancia y colorido. Las mujeres cochabambinas han mantenido viva esta tradición, especialmente visible en fiestas patronales y celebraciones regionales.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Pollera amplia con bordados florales</li>
+                            <li>Blusa blanca con encajes de Camiri</li>
+                            <li>Rebozo o manta de seda</li>
+                            <li>Sombrero de ala ancha o gorra</li>
+                            <li>Alpargatas o zapatos tradicionales</li>
+                            <li>Trenzas largas adornadas con cintas</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 El traje cochabambino refleja la influencia de los valles fértiles en sus diseños florales y colores cálidos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1614853035111-7ae871764a5f?w=800');">
+                    <div class="card-badge">Altiplano</div>
+                </div>
+                <div class="card-content">
+                    <h3>Traje de Oruro - Diablada</h3>
+                    <div class="region">Oruro</div>
+                    <p>El traje de la Diablada es patrimonio de la humanidad. Usado en el Carnaval de Oruro, representa la lucha entre el bien y el mal, fusionando elementos católicos con creencias andinas.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Máscara de diablo con cuernos elaborados</li>
+                            <li>Traje bordado con hilos de oro y pedrería</li>
+                            <li>Capa con dragones y símbolos mineros</li>
+                            <li>Botas de cuero con cascabeles</li>
+                            <li>Pechera con espejos y lentejuelas</li>
+                            <li>Pañuelo bordado con la Virgen del Socavón</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 Cada traje puede pesar hasta 25 kilos y su confección requiere meses de trabajo artesanal.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                    <div class="card-badge">Altiplano</div>
+                </div>
+                <div class="card-content">
+                    <h3>Traje Quechua</h3>
+                    <div class="region">Altiplano y Valles</div>
+                    <p>El pueblo quechua, heredero del Imperio Inca, mantiene viva su tradición textil con prendas que reflejan la jerarquía social y la conexión espiritual con la naturaleza.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Lliclla o aguayo tejido a mano</li>
+                            <li>Pollera de bayeta con bordados</li>
+                            <li>Montera o sombrero de lana</li>
+                            <li>Chumpi (faja) con iconografía ancestral</li>
+                            <li>Ojota (sandalia) de cuero</li>
+                            <li>Tupus (prendedores) de plata</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 Los tejidos quechuas incluyen símbolos que representan animales sagrados, montañas y elementos cosmológicos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                    <div class="card-badge">Tierras Bajas</div>
+                </div>
+                <div class="card-content">
+                    <h3>Traje Guaraní</h3>
+                    <div class="region">Chaco boliviano</div>
+                    <p>El traje guaraní refleja la identidad de los pueblos del oriente boliviano, adaptado al clima cálido y con elementos que muestran su conexión con la naturaleza tropical.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Tipoy (vestido largo de algodón)</li>
+                            <li>Bordados con motivos de flora y fauna</li>
+                            <li>Collares de semillas y plumas</li>
+                            <li>Vinchas con diseños geométricos</li>
+                            <li>Telas livianas de colores naturales</li>
+                            <li>Descalzos o sandalias de cuero</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 Los guaraníes destacan por sus tejidos de caraguatá, una fibra vegetal tradicional de la región.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1566404394190-cda8c6209208?w=800');">
+                    <div class="card-badge">Valles</div>
+                </div>
+                <div class="card-content">
+                    <h3>Traje de Chaqueño</h3>
+                    <div class="region">Tarija</div>
+                    <p>El traje chaqueño representa la cultura gauchesca de Tarija, con influencias argentinas. Es típico en festividades como la Fiesta de la Vendimia y San Roque.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Bombachas (pantalón amplio) de gamuza</li>
+                            <li>Camisa blanca con pañuelo al cuello</li>
+                            <li>Sombrero de ala ancha</li>
+                            <li>Botas de cuero con espuelas</li>
+                            <li>Faja o cinturón típico</li>
+                            <li>Poncho para las mujeres con diseños florales</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 El traje chaqueño refleja la tradición vitivinícola y ganadera de la región más meridional de Bolivia.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583003241989-8ca084ef8d7b?w=800');">
+                    <div class="card-badge">Altiplano</div>
+                </div>
+                <div class="card-content">
+                    <h3>Traje de Potosí</h3>
+                    <div class="region">Potosí</div>
+                    <p>La vestimenta potosina refleja la historia minera de la ciudad imperial, con elementos que muestran tanto la riqueza del Cerro Rico como las tradiciones ancestrales.</p>
+                    <div class="characteristics">
+                        <h4>Elementos Característicos:</h4>
+                        <ul>
+                            <li>Pollera negra o de colores oscuros</li>
+                            <li>Mantilla bordada con hilos de plata</li>
+                            <li>Sombrero de ala corta</li>
+                            <li>Joyas de plata de los maestros plateros</li>
+                            <li>Blusa con bordados finos</li>
+                            <li>Múltiples enaguas almidonadas</li>
+                        </ul>
+                    </div>
+                    <div class="cultural-note">
+                        💡 Los trajes potosinos incorporan plata en sus adornos, recordando la riqueza mineral de la región.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro">
+            <h2>Patrimonio Cultural Inmaterial</h2>
+            <p>Los trajes tradicionales bolivianos son mucho más que vestimenta: son expresión de resistencia cultural, orgullo nacional e identidad. Cada hilo tejido cuenta historias de nuestros ancestros, cada color representa elementos de nuestra cosmovisión andina y amazónica. En Bolivia, vestir el traje tradicional es un acto de afirmación cultural y un homenaje a las generaciones que preservaron estas tradiciones a través de los siglos.</p>
+            <p style="margin-top: 1rem; color: #D4145A; font-weight: bold;">La UNESCO ha reconocido al Carnaval de Oruro y sus trajes como Obra Maestra del Patrimonio Oral e Intangible de la Humanidad.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Dancflow - Bolivia Plurinacional</strong></p>
+        <p>36 Naciones, 36 Culturas, Una sola Bolivia</p>
+        <div style="margin: 1.5rem 0; padding: 1.5rem; background: linear-gradient(135deg, #FFF5E6 0%, #FFF9F0 100%); border-radius: 10px; border-left: 4px solid #D4145A;">
+            <h3 style="color: #D4145A; margin-bottom: 1rem; font-size: 1.3rem;">📞 Contacto</h3>
+            <p style="color: #333; margin-bottom: 0.5rem;"><strong>Teléfono:</strong> 72758524</p>
+            <p style="color: #333;"><strong>Dirección:</strong> Av. Rinconada, Cochabamba</p>
+        </div>
+        <p class="motto">🎭 ¡Jallalla Bolivia! 🇧🇴</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">
+            Preservando nuestro patrimonio textil para las futuras generaciones
+        </p>
+        <div class="flag-colors-bottom"></div>
+    </footer>
+</body>
+</html>
